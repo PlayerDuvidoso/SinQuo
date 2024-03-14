@@ -2,7 +2,7 @@
 
 {% block main %}
     
-<div class="col d-flex flex-column justify-content-between" style="height: 55vh; margin-top: 10vh;">
+<div id="content" class="col d-flex flex-column justify-content-between" style="height: 55vh; margin-top: 10vh;">
     
     <!--The Reason-->
     <div id="reason" class="container-fluid">
@@ -19,7 +19,7 @@
     <!--The call to action-->
     <div id="call" class="container d-flex justify-content-center">
 
-        <button type="button" id="call-btn" class="fs-3">Unleash Your Wisdom!</button>
+        <button hx-get="{{url_for('login.login')}}" hx-target="#content" type="button" id="call-btn" class="fs-3">Unleash Your Wisdom!</button>
     
     </div>
 </div>

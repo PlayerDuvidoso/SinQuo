@@ -1,1 +1,18 @@
-{% extends 'base.html' %}
+<div class="container-fluid">
+
+    <div class="container-fluid border border-2 border-black rounded-2 py-3 w-50">
+
+        <div class="fs-1 mb-3">Sign Up</div>
+
+        <form class="form">
+            <div class="mb-3" hx-target="this" hx-swap="outerHTML">
+                <input type="email" hx-post="{{url_for('validation.validate_email')}}" name="useremail" class="form-control" placeholder="Email">
+            </div>
+            <div class="mb-3">
+                <input type="password" name="userpassword" class="form-control" placeholder="Password">
+            </div>
+
+        </form>
+
+    </div>
+</div>
