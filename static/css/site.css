@@ -1,0 +1,12 @@
+#call-btn {
+    transition: 0.2s;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: white;
+}
+
+#call-btn:hover {
+    transform: scale(1.05);
+    color: white;
+    background-color: black;
+}

@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, render_template
 
 loginbp = Blueprint('login', __name__)
 
@@ -7,7 +7,7 @@ def login():
     
 
     if request.method == 'GET':
-        return 'Free Fire'
+        return render_template('login.html')
 
     elif request.method == 'POST':
-        return 'Free Fire Max'
+        return render_template('login.html')

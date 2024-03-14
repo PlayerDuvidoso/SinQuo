@@ -17,28 +17,30 @@
 </head>
 <body>
 
-    {% block header %}
-        <header>
-
-        {% block navbar %}
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <div class="container d-flex justify-content-center">
-                    <a class="navbar-brand" href="#">SinQuo</a>
-                </div>
-            </nav>
+    <header id="the-header">
+        {% block header %}
             
-        {% endblock navbar %}
-        
-        </header>
-    {% endblock header %}
+            <!--Navigation-->
+            {% block navbar %}
+                <nav class="navbar navbar-expand-sm border-bottom border-2 border-black">
+                    <div class="container d-flex justify-content-center">
+                        <a class="navbar-brand fs-2 text-black" href="#the-header">SinQuo</a>
+                    </div>
+                </nav>            
+            {% endblock navbar %}
 
-    {% block main %}
-        <main></main>
-    {% endblock main %}
+        {% endblock header %}
+    </header>
 
-    {% block footer %}
-        <footer></footer>
-    {% endblock footer %}
+    <main id="content">
+        {% block main %}
+        {% endblock main %}
+    </main>
+
+    <footer>
+        {% block footer %} 
+        {% endblock footer %}
+    </footer>
 
     <!--Imports-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
