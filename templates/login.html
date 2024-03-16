@@ -2,16 +2,16 @@
 
     <div class="container-fluid border border-2 border-black rounded-2 py-3 w-50">
 
-        <div class="fs-1 mb-3">Sign Up</div>
+        <div class="fs-1 mb-3">Create Account</div>
 
         <form class="form">
             <div class="mb-3" hx-target="this" hx-swap="outerHTML">
                 <input type="email" hx-post="{{url_for('validation.validate_email')}}" name="useremail" class="form-control" placeholder="Email">
             </div>
             <div class="mb-3" hx-target="this" hx-swap="outerHTML">
-                <input type="password" hx-post="{{url_for('validation.validate_password')}}" name="userpassword" class="form-control" placeholder="Password">
+                <input type="password" hx-post="{{url_for('validation.validate_password')}}" name="userpassword" class="form-control text-dark" placeholder="Password">
             </div>
-            <button hx-post="{{url_for('validation.validate_submit')}}"></button>
+            <button class="btn" hx-post="{{url_for('validation.validate_submit')}}">Sign Up</button>
 
         </form>
 
