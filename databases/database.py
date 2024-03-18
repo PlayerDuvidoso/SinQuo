@@ -8,16 +8,12 @@ user_col = db['Users']
 
 
 def email_exists(useremail: str):
-
     email_exist = user_col.find_one({'email': f'{useremail}'})
-    
-    if not email_exist:
-        return False
-    return True
+    return email_exist
 
-def create_user(useremail: str, userpassword: str, userquote: str):
+def create_user(useremail: str, userpassword: str, username: str, userquote: str):
 
-    data = {'email': f'{useremail}', 'password': f'{userpassword}', 'quote': f'{userquote}'}
+    data = {'email': f'{useremail}', 'password': f'{userpassword}', 'username': f'{username}', 'quote': f'{userquote}'}
 
     if not email_exists(useremail):
         user_col.insert_one(data)

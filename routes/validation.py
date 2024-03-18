@@ -2,8 +2,18 @@ from flask import Blueprint, request, render_template
 import jwt
 from config import private_key
 from databases import database
+from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 validationbp = Blueprint('validation', __name__)
+
+
+class User(BaseModel):
+    email: EmailStr
+    password: str
+    username: str
+    quote: str
+
 
 def check_email(user_email: str):
 
@@ -52,17 +62,14 @@ def validate_submit():
 
     user_email=request.form['useremail']
     user_password=request.form['userpassword']
-    email_check = check_email(user_email)
-    password_check = check_password(user_password)
 
-    if email_check['isValid'] and password_check['isValid']:
+    if check_email(user_email)['isValid'] and check_password(user_password)['isValid']:
 
-        encoded = jwt.encode({'password': f'{user_password}'}, private_key, algorithm='HS256')
+        user_password = jwt.encode({'password': f'{user_password}'}, private_key, algorithm='HS256')
+        user = User(email=user_email, password=user_password, username='', quote='')
 
-        if database.create_user(user_email, encoded, ''):
+        #if database.create_user(user_email, encoded, '', ''):
 
-            return 'User Created!'
-
-        return 'Something Went Wrong!'
+        return render_template('profile_details.html', credentials=user.model_dump_json())
 
     
