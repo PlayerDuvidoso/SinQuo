@@ -1,5 +1,8 @@
 from pymongo import MongoClient
-from config import private_key
+import os
+
+
+private_key = os.getenv('private_key')
 
 #Connecting to MongoDB
 db_con = MongoClient("localhost", 27017)

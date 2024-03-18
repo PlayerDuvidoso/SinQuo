@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 from routes.login import loginbp
 from routes.validation import validationbp
+import dotenv
+
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 app = Flask(__name__)
 
