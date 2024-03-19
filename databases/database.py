@@ -2,7 +2,6 @@ from pymongo import MongoClient
 import os
 from pydantic import BaseModel
 from icecream import ic
-import jwt
 
 private_key = os.getenv('private_key')
 
