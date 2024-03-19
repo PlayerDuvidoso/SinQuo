@@ -1,12 +1,14 @@
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 import os
 from pydantic import BaseModel
 from icecream import ic
 
 private_key = os.getenv('private_key')
+uri = "mongodb+srv://artuzao97:Cerrano97%21@cluster-sinquo.yigs2wj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-SinQuo"                                          
 
 # -->Connecting to MongoDB<--
-db_con = MongoClient("localhost", 27017)
+db_con = MongoClient(uri, server_api=ServerApi('1'))
 db = db_con['SinQuo']
 user_col = db['Users']
 
