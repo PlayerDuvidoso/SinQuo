@@ -3,9 +3,19 @@ from pymongo.server_api import ServerApi
 import os
 from pydantic import BaseModel
 from icecream import ic
+from urllib.parse import quote_plus
+import dotenv
+
+#   -->Loading and getting the Environment Variables<--
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 private_key = os.getenv('private_key')
-uri = "mongodb+srv://artuzao97:Cerrano97%21@cluster-sinquo.yigs2wj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-SinQuo"                                          
+mongouser = quote_plus(os.getenv('mongouser'))
+password= quote_plus(os.getenv('password'))
+cluster = os.getenv('uri_cluster')
+uri_start = os.getenv('uri_start')
+uri_end = os.getenv('uri_end')
+uri = f"{uri_start}{mongouser}:{password}{cluster}{uri_end}"
 
 # -->Connecting to MongoDB<--
 db_con = MongoClient(uri, server_api=ServerApi('1'))
