@@ -1,0 +1,4 @@
+<div class="mb-3" hx-target="this" hx-swap="outerHTML">
+    <input type="text" hx-post="{{url_for('validation.validate_quote')}}" name="userquote" class="form-control" placeholder="Username" value="{{userquote}}">
+    <p class="text-danger">{{status}}</p>
+</div>
