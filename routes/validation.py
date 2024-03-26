@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template
 import jwt
 from databases import database
 from pydantic import BaseModel
+from flask_login import login_user, current_user
 
 validationbp = Blueprint('validation', __name__)
 
@@ -110,6 +111,8 @@ def validate_submit():
         user_password = jwt.encode({'password': f'{user_password}'}, database.private_key, algorithm='HS256')
         database.create_user(user_email, user_password, username, userquote)
 
-        return render_template('profile_details.html')
+        login_user(database.get_user(user_email))
+
+        return render_template('profile_details.html', useremail=current_user.email)
 
     
